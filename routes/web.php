@@ -35,4 +35,4 @@ Route::get('/test', function () {
 //    return view('post', ['post' => $posts[$post]]);
 //});
 
-Route::get('/posts/{post}', [PostsController::class, 'show']);
+Route::get('/posts/{slug}', [PostsController::class, 'show']);
