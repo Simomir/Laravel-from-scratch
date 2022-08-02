@@ -36,3 +36,6 @@ Route::get('/test', function () {
 //});
 
 Route::get('/posts/{slug}', [PostsController::class, 'show']);
+Route::get('/about', function () {
+    return view('about');
+});
