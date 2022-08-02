@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,11 @@ Route::get('/index', function () { return view('elements/index'); })->name('inde
 Route::get('/left-sidebar', function () {return view('elements/left-sidebar'); })->name('left_sidebar');
 Route::get('/no-sidebar', function () { return view('elements/no-sidebar'); })->name('no_sidebar');
 Route::get('/right-sidebar', function () { return view('elements/right-sidebar'); })->name('right_sidebar');
+
+// Article routes
+Route::get('/about', function () {
+//    return Article::all();
+//    return Article::take(2)->get();
+//    return Article::paginate(2);
+    return view('about', ['articles'=>Article::latest('created_at')->get()]);
+});
