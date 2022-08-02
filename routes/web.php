@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ArticlesController;
 use App\Models\Article;
 
 /*
@@ -50,5 +51,7 @@ Route::get('/about', function () {
 //    return Article::all();
 //    return Article::take(2)->get();
 //    return Article::paginate(2);
-    return view('about', ['articles'=>Article::latest('created_at')->get()]);
+    return view('about', ['articles'=>Article::take(3)->latest('created_at')->get()]);
 });
+
+Route::get('/articles/{article}', [ArticlesController::class, 'show']);
