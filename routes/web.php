@@ -36,6 +36,10 @@ Route::get('/test', function () {
 //});
 
 Route::get('/posts/{slug}', [PostsController::class, 'show']);
-Route::get('/about', function () {
-    return view('about');
-});
+
+// Routes fo premade template
+Route::get('/', function () {return view('welcome'); })->name('layout');
+Route::get('/index', function () { return view('elements/index'); })->name('index');
+Route::get('/left-sidebar', function () {return view('elements/left-sidebar'); })->name('left_sidebar');
+Route::get('/no-sidebar', function () { return view('elements/no-sidebar'); })->name('no_sidebar');
+Route::get('/right-sidebar', function () { return view('elements/right-sidebar'); })->name('right_sidebar');
