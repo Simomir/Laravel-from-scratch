@@ -28,4 +28,8 @@ class Article extends Model
      * @var array|Application|Request|mixed|string|null
      */
     public $body;
+
+    protected $table = 'articles';
+    protected $connection = 'mysql';
+    protected $fillable = ['title', 'excerpt', 'body'];
 }

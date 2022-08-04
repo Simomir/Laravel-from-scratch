@@ -25,17 +25,13 @@ class ArticlesController extends Controller
 
     // Persist the new resource
     public function store() {
-        \request()->validate([
+        $validated = \request()->validate([
            'title' => ['required'],
            'excerpt' => ['required'],
            'body' => ['required']
         ]);
 
-        $article = new Article();
-        $article->title = \request('title');
-        $article->excerpt = \request('excerpt');
-        $article->body = \request('body');
-        $article->save();
+        Article::create($validated);
 
         return redirect('/articles');
     }
@@ -47,16 +43,13 @@ class ArticlesController extends Controller
 
     // Persist the edited resource
     public function update(Article $article) {
-        \request()->validate([
+        $validated = \request()->validate([
             'title' => ['required'],
             'excerpt' => ['required'],
             'body' => ['required']
         ]);
 
-        $article->title = \request('title');
-        $article->excerpt = \request('excerpt');
-        $article->body = \request('body');
-        $article->save();
+        $article->update($validated);
 
         return redirect('/articles'.$article->id);
     }
