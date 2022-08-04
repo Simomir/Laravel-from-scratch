@@ -14,8 +14,7 @@ class ArticlesController extends Controller
     }
 
     // Show a single resource
-    public function show($id) {
-        $article = Article::find($id);
+    public function show(Article $article) {
         return view('articles.show')->with('article', $article);
     }
 
