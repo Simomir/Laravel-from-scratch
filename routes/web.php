@@ -53,5 +53,5 @@ Route::get('/about', function () {
 //    return Article::paginate(2);
     return view('about', ['articles'=>Article::take(3)->latest('created_at')->get()]);
 });
-
+Route::get('/articles', [ArticlesController::class, 'index']);
 Route::get('/articles/{article}', [ArticlesController::class, 'show']);
