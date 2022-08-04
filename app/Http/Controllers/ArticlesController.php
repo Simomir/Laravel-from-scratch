@@ -25,11 +25,7 @@ class ArticlesController extends Controller
 
     // Persist the new resource
     public function store() {
-        $validated = \request()->validate([
-           'title' => ['required'],
-           'excerpt' => ['required'],
-           'body' => ['required']
-        ]);
+        $validated = $this->validateArticle();
 
         Article::create($validated);
 
@@ -43,11 +39,7 @@ class ArticlesController extends Controller
 
     // Persist the edited resource
     public function update(Article $article) {
-        $validated = \request()->validate([
-            'title' => ['required'],
-            'excerpt' => ['required'],
-            'body' => ['required']
-        ]);
+        $validated = $this->validateArticle();
 
         $article->update($validated);
 
@@ -57,5 +49,14 @@ class ArticlesController extends Controller
     // Delete the resource
     public function destroy() {
 
+    }
+
+    protected function validateArticle(): array
+    {
+        return \request()->validate([
+                'title' => ['required'],
+                'excerpt' => ['required'],
+                'body' => ['required']
+        ]);
     }
 }
