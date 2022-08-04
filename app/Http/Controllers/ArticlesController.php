@@ -45,7 +45,13 @@ class ArticlesController extends Controller
     }
 
     // Persist the edited resource
-    public function update($id) {
+    public function update(Request $request, $id) {
+        $request->validate([
+            'title' => ['required'],
+            'excerpt' => ['required'],
+            'body' => ['required']
+        ]);
+
         $article = Article::find($id);
         $article->save();
         return redirect('/articles'.$article->id);
