@@ -16,18 +16,10 @@ class Article extends Model
 //    {
 //        return 'slug';
 //    }
-    /**
-     * @var array|Application|Request|mixed|string|null
-     */
-    public $title;
-    /**
-     * @var array|Application|Request|mixed|string|null
-     */
-    public $excerpt;
-    /**
-     * @var array|Application|Request|mixed|string|null
-     */
-    public $body;
+
+    public string $title;
+    public string $excerpt;
+    public string $body;
 
     protected $table = 'articles';
     protected $connection = 'mysql';
