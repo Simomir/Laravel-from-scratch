@@ -43,7 +43,7 @@ class ArticlesController extends Controller
 
         $article->update($validated);
 
-        return redirect('/articles'.$article->id);
+        return redirect('/articles/'.$article->id);
     }
 
     // Delete the resource
