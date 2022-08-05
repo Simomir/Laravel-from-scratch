@@ -19,7 +19,7 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-        // article_tag
+        // article_tag pivot table
         Schema::create('article_tag', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('article_id');
