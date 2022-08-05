@@ -3,7 +3,7 @@
 @section('content')
     <div id="wrapper">
         <div id="page" class="container">
-            @foreach($articles as $article)
+            @forelse($articles as $article)
                 <div class="content">
                     <div class="title">
                         <h2>
@@ -15,7 +15,9 @@
                     </p>
                     {!! $article->excerpt !!}
                 </div>
-            @endforeach
+            @empty
+                <p>No relevant articles yet.</p>
+            @endforelse
         </div>
     </div>
 @endsection
