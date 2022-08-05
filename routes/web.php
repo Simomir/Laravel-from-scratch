@@ -53,7 +53,7 @@ Route::get('/about', function () {
 //    return Article::paginate(2);
     return view('about', ['articles'=>Article::take(3)->latest('created_at')->get()]);
 });
-Route::get('/articles', [ArticlesController::class, 'index']);
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 Route::post('/articles', [ArticlesController::class, 'store']);
 Route::get('/articles/create', [ArticlesController::class, 'create']);  // It's before the show route cuz otherwise show route takes precedence
 Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');

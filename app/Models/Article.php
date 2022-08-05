@@ -23,4 +23,9 @@ class Article extends Model
     protected $table = 'articles';
     protected $connection = 'mysql';
     protected $fillable = ['title', 'excerpt', 'body'];
+
+    public function path(): string
+    {
+        return route('articles.show', $this);
+    }
 }
