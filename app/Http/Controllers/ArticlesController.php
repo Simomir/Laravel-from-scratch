@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
@@ -9,7 +10,12 @@ class ArticlesController extends Controller
 {
     // Render a list of a resource
     public function index () {
-        $articles = Article::latest()->get();
+        if (\request('tag')) {
+            $articles = Tag::where('name', \request('tag'))->firstOrFail()->articles;
+        } else {
+            $articles = Article::latest()->get();
+        }
+
         return view('articles.index', ['articles' => $articles]);
     }
 
